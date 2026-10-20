@@ -1,0 +1,22 @@
+{
+  "name": "gestionale-artigiano-pwa",
+  "version": "1.0.4",
+  "private": true,
+  "type": "module",
+  "description": "PWA dimostrativa per il gestionale di un artigiano",
+  "scripts": {
+    "dev": "node scripts/server.mjs",
+    "build": "node scripts/build.mjs",
+    "check:syntax": "node scripts/typecheck.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "python3 scripts/browser_smoke.py",
+    "test:browser-auth": "python3 scripts/auth_browser_smoke.py",
+    "check:baseline": "node scripts/baseline.mjs check",
+    "freeze:baseline": "node scripts/baseline.mjs freeze",
+    "quality": "npm run check:syntax && npm test && npm run build && npm run check:baseline",
+    "preview": "node scripts/server.mjs --root=dist"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
