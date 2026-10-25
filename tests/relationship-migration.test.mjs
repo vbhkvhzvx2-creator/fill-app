@@ -14,7 +14,7 @@ test('P1 migration adds explicit nullable job-to-site relationship', () => {
 
 test('P1 migration keeps invoice and site client identities consistent', () => {
   assert.match(sql, /invoices_site_same_client_fk[\s\S]*foreign key \(owner_id, client_id, site_id\)[\s\S]*references public\.sites \(owner_id, client_id, id\)/i);
-  assert.match(sql, /existi?ono fatture collegate a un cantiere di un cliente diverso/i);
+  assert.match(sql, /esistono fatture collegate a un cantiere di un cliente diverso/i);
 });
 
 test('P1 migration prevents linking a deadline to another client job', () => {
@@ -24,6 +24,6 @@ test('P1 migration prevents linking a deadline to another client job', () => {
 
 test('P1 migration is transactional and preserves destructive-delete guards', () => {
   assert.match(sql, /^begin;/i);
-  assert.match(sql, /on delete restrict/ig);
+  assert.match(sql, /on delete restrict/i);
   assert.match(sql, /commit;\s*$/i);
 });
