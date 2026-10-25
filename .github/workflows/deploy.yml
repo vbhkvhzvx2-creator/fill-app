@@ -22,6 +22,8 @@ jobs:
       contents: read
       pages: write
       id-token: write
+    outputs:
+      publish_ready: ${{ steps.release-gate.outputs.ready }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,19 +36,35 @@ jobs:
       - name: Run quality gates
         run: npm run quality
 
-      - name: Configure GitHub Pages
+      # Do not publish the old 1.0.4 source over a newer live app.
+      # Deployment is enabled only after the approved 1.3.0 source sync.
+      - name: Check release source is synchronized
+        id: release-gate
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        shell: bash
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          if [ "$VERSION" = "1.3.0" ] && [ -f "js/supabase-data.js" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "Release source is synchronized; deployment may proceed."
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Deployment safely skipped::Current source is not the approved 1.3.0 release. Sync and validate the source before enabling deployment."
+          fi
+
+      - name: Configure GitHub Pages
+        if: steps.release-gate.outputs.ready == 'true'
         uses: actions/configure-pages@v5
 
       - name: Upload compiled PWA
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: steps.release-gate.outputs.ready == 'true'
         uses: actions/upload-pages-artifact@v4
         with:
           path: dist
 
   deploy:
     name: Deploy to GitHub Pages
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.validate.outputs.publish_ready == 'true'
     needs: validate
     runs-on: ubuntu-latest
     permissions:
