@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "createdAt": "2026-10-25T14:15:00.000Z",
+  "hashes": {
+    "js/model.js": "bded250adae8e950068685ec378791e87d9b231267406ee9e9c649399d357b72",
+    "js/repository.js": "5cefd5e16c58086c8dcfdc02b252e5c14512bfec472dcc7bf243b55eddb3d6ca",
+    "js/app.js": "950b73257586015ad5b12a155d50fa02e21d8f549bf86543dbb679ec8427c436",
+    "js/screens.js": "75171ef0b18f6c1b02310ed61b3b710b01c9ce5086672efbe8e8789c909d798d",
+    "js/ui.js": "93211a92c7ee2f64f40acede9004c153545d54fb19dce90df26bff92f4ad65de",
+    "js/supabase-config.js": "046a40de4d0f431c2e254d86cb2ceb11d5a8f4674b596336f3f3803521abd687",
+    "js/supabase-auth.js": "dbbaaab8de39476a57a095c1b46ae595b35e5ceea47141ecb8a88543c131c5fd",
+    "styles.css": "12a0ffced61d69b77b3800c19fe53153fe578b68370e66b31095c4f2ba21e912",
+    "index.html": "e967764446acf6007b75973a7925d717a56e9b006a6285dddfccd6db93bc81bb",
+    "public/manifest.webmanifest": "bd5105c8d86d3d385d32aa6bc647471f25a735c9d785e14c56e805cdd8364f5b",
+    "public/sw.js": "2fc64710ddc7ed366f19e6ef71d79e6bc3b1d5925f6f214ee9ba8adbc9ce9025",
+    "public/icons/icon.svg": "fb50007d5267b08dafb76806ee2e249b09811815ce20c9821464310ba5f06be3",
+    "public/icons/icon-192.png": "ea5d46b706f45e058c5e0e0a8f68e063996e13fab07a35e13a2bff8ed833bab6",
+    "public/icons/icon-512.png": "9147b3db0291d75443c6b80881f8c7ab846a8b934e29f6cfd223f76a93ac235c",
+    "public/images/site-roof.png": "d2fe3b2c008d43bc9ee7d140310f1d3471b533f82054592a6636776436c7542c",
+    "public/images/login-worker-reference.png": "4f935e13a4c7a97c033c1b734165de47d89044332c515b98ea057b37dacfc62a",
+    "public/images/marco-avatar.png": "1f300181c1b45017dac059efe712ec69e3b79670019df16723d3709a072d6390"
+  }
+}
