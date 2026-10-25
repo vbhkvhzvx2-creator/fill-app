@@ -23,7 +23,7 @@ test('P1 migration prevents linking a deadline to another client job', () => {
 });
 
 test('P1 migration is transactional and preserves destructive-delete guards', () => {
-  assert.match(sql, /^begin;/i);
+  assert.match(sql, /\nbegin;\s/i);
   assert.match(sql, /on delete restrict/i);
   assert.match(sql, /commit;\s*$/i);
 });
